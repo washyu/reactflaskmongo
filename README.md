@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is based on the flask react project by [Miguel Grinberg](https://blog.miguelgrinberg.com/author/Miguel%20Grinberg)
 
-A Flask based API backend was added in the *api* directory.
-
-Read my [tutorial](https://blog.miguelgrinberg.com/post/how-to-create-a-react--flask-project) on how to create Flask + React combined projects.
+You can find the tutorial [tutorial](https://blog.miguelgrinberg.com/post/how-to-create-a-react--flask-project) that I follow here.
