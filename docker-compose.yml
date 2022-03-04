@@ -1,9 +1,12 @@
+version: '3.3'
 services:
   api:
     build:
       context: .
       dockerfile: Dockerfile.api
     image: react-flask-app-api
+    links:
+      - monodb
   client:
     build:
       context: .
@@ -11,3 +14,16 @@ services:
     image: react-flask-app-client
     ports:
       - "3000:80"
+  monodb:
+    image: mongo:latest
+    container_name: monodb
+    hostname: test_monogodb
+    environment:
+      - MONGO_INITDB_DATABASE=animal_db
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    volumes:
+      - ./init-db:/docker-entrypoint-initdb.d
+    ports:
+      - 27017:27017
+    restart: unless-stopped

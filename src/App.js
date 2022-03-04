@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
+import ListTest from './componets/ListTest';
 import logo from './logo.svg';
 import './App.css';
 
+
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
+  const [animals, setAmimals] = useState([]);
 
   useEffect(() => {
     fetch('/api/time').then(res => res.json()).then(data => {
       setCurrentTime(data.time);
+    });
+    fetch('/api/animals').then(res => res.json()).then(data => {
+      setAmimals(data.animals)
+      console.log(data.animals)
     });
   }, []);
 
@@ -36,6 +43,7 @@ function App() {
                   Learn React
                 </a>
                 <p>The current time is {currentTime}.</p>
+                <ListTest animals={animals} />
             </Route>
             <Route path="/page2">
                 <p>This is page 2!</p>
